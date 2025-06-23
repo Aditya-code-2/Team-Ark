@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Loop Login</title>
+
+
+    <!--CSS PART-->
+    <style>
+        
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color:#e6e8eb ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+.left-side {
+    max-width: 450px;
+}
+.left-side h1 {
+    color: #393f45;
+    font-size: 88px;
+    margin-bottom: 20px;
+    animation: slideFade 3s ease-in-out;
+}
+.left-side p {
+    font-size: 22px;
+    color: #1c1e21;
+}
+.login-box {
+    background: #c0dcf8;
+    padding: 30px 25px;
+    border-radius: 28px;
+ 
+    width: 350px;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.7);
+}
+.login-box input {
+    width: 90%;
+    padding: 24px;
+    margin-bottom: 8px;
+    border: 1px solid #1c1c1d;
+    border-radius: 18px;
+    font-size: 16px;
+    color: #17202a;
+}
+.login-box button {
+    width: 100%;
+    background-color: #3b3c3d;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.login-box button:hover {
+    background-color: #010b18;
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 12px;
+}
+.forgot-password a {
+    color: #020407;
+    text-decoration: none;
+    font-size: 14px;
+}
+.create-account {
+    margin-top: 20px;
+    text-align: center;
+}
+.create-account button {
+    background-color: #17202a;
+    width: auto;
+    padding: 12px 20px;
+    font-size: 12px;
+    border-radius: 40px;
+
+}
+.bottom-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #606770;
+}
+.bottom-text a {
+    color: #1c1e21;
+    font-weight: bold;
+    text-decoration: none;
+}
+h2{
+    color: #606770;
+    animation: slideInLeft 4s ease-out;
+   
+}
+.forgot-password a:hover {
+    color:  #0f3beb ;
+}
+@keyframes slideFade {
+0% {
+opacity: 0;
+transform: translateY(-50px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@keyframes slideInLeft {
+0% { transform: translateX(-100px); opacity: 0; }
+100% { transform: translateX(0); opacity: 1; }
+}
+
+
+    </style>
+
+
+
+<!--HTML-->
+
+   
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="left-side">
+        <h1>Legacy Loop</h1>
+        <h2>One Loop , Infinite Connections.</h3>
+    </div>
+
+
+    <div class="login-box">
+        <form>
+            
+            <input type="email" placeholder="Email address">
+            <input type="password" placeholder="Password" >
+            <button type="submit">Log In</button>
+            <div class="forgot-password">
+                <a href="#">Forgotten password?</a>
+                
+            </div>
+           
+            <div class="create-account">
+                <button type="button">Create New Account</button>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
