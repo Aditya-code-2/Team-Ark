@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alumni Network</title>
-
-  
+ 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<!--CSS PART-->
+<style>
 
-  <!--CSS part-->
-
-  <style>
-    * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -63,6 +61,19 @@ body {
 .btn-primary:hover {
   background: #1e1c99;
 }
+.btn-secondary {
+  padding: 0.75rem 2rem;
+  background: #3f77cc;    
+  color: white;
+  border: none;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.btn-secondary:hover {
+  background: #1e1c99;
+}
 
 .about {
   padding: 3rem 2rem;
@@ -105,6 +116,46 @@ body {
   box-shadow: 0 8px 32px rgba(63,119,204,0.18);
   border-color: #3f77cc;
 }
+.mission {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: #f4f7fb;
+}
+.mission h2 {
+  color: #3f77cc;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.mission p {
+  color: #1e1c99;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+.goals {
+  padding: 2.5rem 2rem;
+  background: #fff;
+  text-align: center;
+}
+.goals h2 {
+  color: #3f77cc;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.goals ul {
+  list-style: none;
+  padding: 0;
+  color: #3a0ddd;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.goals li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
 
 .stories {
   padding: 3rem 2rem;
@@ -120,19 +171,6 @@ body {
   max-width: 600px;
   margin-inline: auto;
   border: none;
-}
-.btn-secondary {
-  padding: 0.75rem 2rem;
-  background: #3f77cc;    
-  color: white;
-  border: none;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-.btn-secondary:hover {
-  background: #1e1c99;
 }
 
 .team {
@@ -253,7 +291,103 @@ footer .socials a {
   text-decoration: none;
 }
 
-  </style>
+.navbar {
+  background: #3f77cc;
+  color: #fff;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(63,119,204,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo a,
+.nav-logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0;
+}
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+}
+.nav-links li a:hover,
+.nav-links li .nav-btn:hover {
+  background: #1e1c99;
+  color: #fff;
+}
+.nav-btn {
+  background: #3a0ddd;
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    background: #3f77cc;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    display: none;
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(63,119,204,0.08);
+  }
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  .nav-toggle:checked + .nav-toggle-label + .nav-links {
+    display: flex;
+  }
+  .nav-toggle-label {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: auto;
+    color: #fff;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+  }
+}
+</style>
+  <!--HTML PART-->
 
 
 
@@ -261,13 +395,34 @@ footer .socials a {
 
 
 
-<!--HTML Part-->
 
 
 
-  
+
+
+
+
+
+
+
 </head>
 <body>
+  <nav class="navbar">
+  <div class="nav-container">
+    <span class="nav-logo"><a href="#">Legacy Loop</a></span>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle"/>
+    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/createAccount.html" class="nav-btn">Register</a></li>
+    </ul>
+  </div>
+</nav>
   <header class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
@@ -276,99 +431,123 @@ footer .socials a {
     </div>
   </header>
 
+
   <main>
-    <section class="about">
-      <h2>About</h2>
-      <p>Connecting alumni and students for a thriving, lifelong community.</p>
-      <div class="features">
-        <div class="card">
-          <i class="icon">👥</i>
-          <h3>Alumni Directory</h3>
-          <p>Find and connect with fellow graduates.</p>
-        </div>
-        <div class="card">
-          <i class="icon">⭐</i>
-          <h3>Student Mentorship</h3>
-          <p>Guide the next generation with your expertise.</p>
-        </div>
-        <div class="card">
-          <i class="icon">💼</i>
-          <h3>Job Board</h3>
-          <p>Explore job and internship opportunities.</p>
-        </div>
-      </div>
-    </section>
+    <!-- About Section -->
+<section class="about" id="about">
+  <h2>About</h2>
+  <p>Connecting alumni and students for a thriving, lifelong community.</p>
+  <div class="features">
+    <div class="card">
+      <i class="icon">👥</i>
+      <h3>Alumni Directory</h3>
+      <p>Find and connect with fellow graduates.</p>
+    </div>
+    <div class="card">
+      <i class="icon">⭐</i>
+      <h3>Student Mentorship</h3>
+      <p>Guide the next generation with your expertise.</p>
+    </div>
+    <div class="card">
+      <i class="icon">💼</i>
+      <h3>Job Board</h3>
+      <p>Explore job and internship opportunities.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="stories">
-      <h2>Success Stories</h2>
-      <div class="testimonial">
-        <p>Through the alumni network, I secured my dream job and gained invaluable mentors along the way.</p>
-      </div>
-      <a href="/createAccount.html" class="btn-secondary">Register Now</a>
-    </section>
-    
-    <section class="team">
-      <h2>Meet the Team</h2>
-      <div class="team-grid">
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Anuj Kumar</h3>
-          <p>Team Leader</p>
-        </div>
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Ayush Raj Kushwaha</h3>
-          <p>Frontend developer</p>
-        </div>
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Aishwarya</h3>
-          <p>Backend developer</p>
-        </div>
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Divya </h3>
-          <p>Database Manager</p>
-        </div>
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Aditya Kumar</h3>
-          <p>Ai developer</p>
-        </div>
-        <div class="member">
-          <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
-          <h3>Sarveshwari Kumari</h3>
-          <p>Frontend developer</p>
-        </div>
-      </div>
-    </section>
+<!-- Mission Section -->
+<section class="mission" id="mission">
+  <h2>Our Mission</h2>
+  <p>
+    The Alumni Network is built to bridge the gap between past and present,
+    creating a strong, thriving community where experience meets enthusiasm.
+    We aim to support career growth, share knowledge, and foster lifelong
+    relationships among alumni and students.
+  </p>
+</section>
 
-    <section class="faq">
-        <h2>FAQ</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>How do I join the alumni network?</summary>
-          <p>Click on the "Join Now" or "Register Now" button and fill out the registration form to become a member.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is there any membership fee?</summary>
-          <p>No, joining the alumni network is completely free for all graduates and students.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How can I contact other alumni?</summary>
-          <p>Use the Alumni Directory feature to search and connect with fellow graduates.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I post job opportunities?</summary>
-          <p>Yes, registered members can share job and internship opportunities on the Job Board.</p>
-        </details>
-      </div>
-    </section>
-     
+<!-- Goals Section -->
+<section class="goals" id="goals">
+  <h2>What We Do?</h2>
+  <ul>
+    <li>👥 Connect alumni and students for mentorship and guidance</li>
+    <li>🎯 Organize virtual and physical alumni meetups</li>
+    <li>💼 Provide job and internship opportunities</li>
+    <li>📚 Promote knowledge sharing through talks and webinars</li>
+  </ul>
+</section>
+<section class="stories">
+  <h2>Success Stories</h2>
+  <div class="testimonial">
+    <p>Through the alumni network, I secured my dream job and gained invaluable mentors along the way.</p>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team" id="team">
+  <h2>Meet the Team</h2>
+  <div class="team-grid">
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Anuj Kumar</h3>
+      <p>Team Leader</p>
+    </div>
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Ayush Raj Kushwaha</h3>
+      <p>Frontend developer</p>
+    </div>
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Aishwarya</h3>
+      <p>Backend developer</p>
+    </div>
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Divya </h3>
+      <p>Database Manager</p>
+    </div>
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Aditya Kumar</h3>
+      <p>Ai developer</p>
+    </div>
+    <div class="member">
+      <!-- <img src="https://via.placeholder.com/80" alt="Team Member"/> -->
+      <h3>Sarveshwari Kumari</h3>
+      <p>Frontend developer</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq" id="faq">
+    <h2>FAQ</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do I join the alumni network?</summary>
+      <p>Click on the "Join Now" or "Register Now" button and fill out the registration form to become a member.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is there any membership fee?</summary>
+      <p>No, joining the alumni network is completely free for all graduates and students.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How can I contact other alumni?</summary>
+      <p>Use the Alumni Directory feature to search and connect with fellow graduates.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I post job opportunities?</summary>
+      <p>Yes, registered members can share job and internship opportunities on the Job Board.</p>
+    </details>
+  </div>
+</section>
+   
   </main>
 
   <footer>
-    <p>&copy; 2024</p>
+    <p>&copy; 2025</p>
     <div class="links">
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
@@ -379,5 +558,12 @@ footer .socials a {
       <a href="#">💼</a>
     </div>
   </footer>
+  <script>
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-toggle').checked = false;
+    });
+  });
+</script>
 </body>
 </html>
