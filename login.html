@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Legacy Loop | Sign Up / Login Slide</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.ico') }}"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #e6e8eb;
+      height: 100vh;
+    }
+
+    .wrapper {
+      width: 900px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      display: flex;
+    }
+
+    .panel {
+      width: 50%;
+      background: linear-gradient(to bottom right, #3f77cc, #84d3ae);
+      color: #fff;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.6s ease;
+      z-index: 2;
+    }
+
+    .panel h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .panel h2 {
+      font-weight: 300;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .panel button {
+      padding: 12px 25px;
+      font-size: 1em;
+      background: #fff;
+      color: #3f77cc;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .panel button:hover {
+      background: #eee;
+    }
+
+    .form-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+
+    .signup-form,
+    .login-form {
+      width: 100%;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .signup-form {
+      transform: translateX(-100%); /* Start off-screen to the left */
+    }
+
+    .form-container.show-signup .signup-form {
+      transform: translateX(0); /* Slide in */
+    }
+
+    .form-container.show-signup .login-form {
+      transform: translateX(100%); /* Slide out */
+    }
+
+    .panel.slide {
+      transform: translateX(100%);
+    }
+
+    .form-container label {
+      font-size: 2em;
+      font-weight: 600;
+      color: #3f77cc;
+      margin-bottom: 20px;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background: #f0f0f0;
+      font-size: 1em;
+    }
+
+    .form-container button.submit-btn {
+      width: 60%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3f77cc;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-container button.submit-btn:hover {
+      background-color: #2a55a1;
+    }
+
+    .forgot_password {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .forgot_password a {
+      color: #69aa9f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Left Panel -->
+    <div class="panel" id="panel">
+      <div>
+        <h1>Legacy Loop</h1>
+        <h2>One Loop, Infinite Connections.</h2>
+      </div>
+      <button onclick="toggleForms()" id="toggleBtn">Sign Up</button>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container" id="formWrapper">
+      <!-- Login Form -->
+      <div class="login-form">
+        <form method="POST" action="{{ url_for('login') }}">
+          <label>Login</label>
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit" class="submit-btn">Log In</button>
+          <div class="forgot_password">
+            <a href="forgot_password.html">Forgot password?</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="signup-form">
+        <form method="POST" action="{{ url_for('register') }}">
+          <label>Sign up</label>
+          <input type="text" name="name" placeholder="Username" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <input type="date" name="dob" required />
+          <select id="grad_year" name="grad_year" required>
+            <option value="">Graduation Year</option>
+          </select>
+          <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS for Sliding and Year Dropdown -->
+  <script>
+    const gradSelect = document.getElementById('grad_year');
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1980; year--) {
+      const option = document.createElement('option');
+      option.value = year;
+      option.textContent = year;
+      gradSelect.appendChild(option);
+    }
+
+    const wrapper = document.getElementById('formWrapper');
+    const panel = document.getElementById('panel');
+    const btn = document.getElementById('toggleBtn');
+
+    let showSignup = false; // Start with the login form visible
+
+    function toggleForms() {
+      showSignup = !showSignup;
+      if (showSignup) {
+        wrapper.classList.add('show-login');
+        panel.classList.add('slide');
+        btn.textContent = "Back to Login";
+      } else {
+        wrapper.classList.remove('show-signup');
+        panel.classList.remove('slide');
+        btn.textContent = "Sign Up";
+      }
+    }
+  </script>
+</body>
+</html>
