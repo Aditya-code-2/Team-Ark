@@ -12,11 +12,13 @@ users = load_users()
 
 @app.route('/')
 def home():
-    return redirect(url_for('login'))
+    session.clear()  # TEMPORARY: Clears previous session
+    return redirect(url_for('homepage'))
 
-@app.route('/HomePage')
+@app.route('/homepage', methods=['GET', 'POST'])
 def homepage():
     return render_template('HomePage.html')
+
 
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
